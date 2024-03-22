@@ -1,7 +1,20 @@
 import os
+
 from Quartz import CGSessionCopyCurrentDictionary as Session
+
 from datetime import datetime
 
+"""
+A class representing a timer.
+
+Attributes:
+    Hours (int): The number of hours on the timer.
+    Minutes (int): The number of minutes on the timer.
+
+Methods:
+    __init__(self, M=0): Initializes the Timer object with the given number of minutes.
+    __str__(self): Returns a string representation of the timer in the format 'HH:MM'.
+"""
 class Timer:
     Hours = 0
     Minutes = 0
@@ -41,8 +54,12 @@ def lunch():
                     print(f'[ {Timer(logTime)} ]|[ {Timer(timeAway)}  ]|[  {curentTime.strftime("%H:%M")}   ]')
                     apart = False
         except KeyboardInterrupt:
-            print('\rexiting...')
             alive = False
+            curentTime = datetime.now()
+            timeAway = curentTime.minute - lock.minute
+            print(f'[ {Timer(logTime)} ]|[ {Timer(timeAway)}  ]|[  {curentTime.strftime("%H:%M")}   ]')
+            apart = False
+            print('\rexiting...')
 
 if __name__ == '__main__':
     lunch()

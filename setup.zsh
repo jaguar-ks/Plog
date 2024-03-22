@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+PTH="$HOME/.tools/plog"
 
 # Checking if the virtual envirement in installed
 check_virtualenv() {
@@ -15,35 +16,35 @@ check_virtualenv() {
 # the requirements if they are not installed
 create_venv() {
     # check_virtualenv
-    if [ -d ".venv" ]; then
+    if [ -d "$PTH/.venv" ]; then
         echo "Virtual environment '.venv' already exists. Aborting."
-        # return 1
+        return 1
     fi
-    python3 -m venv ".venv"
-    source .venv/bin/activate
+    python3 -m venv "$PTH/.venv"
+    source "$PTH/.venv/bin/activate"
     pip3 install --upgrade pip
-    pip3 install -r plogReq.txt
+    pip3 install -r "$PTH/plogReq.txt"
 }
 
 # check if the alias is already mantioned in the .zshrc file if not added it
 add_alias () {
-    $(cat $HOME/.zshrc | grep 'alias plog="python3 $HOME/.tools/plog/main.py"')
+    < $HOME/.zshrc grep 'alias plog="bash $HOME/.tools/plog/run.sh"'
     if [[ $? -eq 1 ]]; then
-        echo 'alias plog="python3 $HOME/.tools/plog/main.py"' >> $HOME/.zshrc
-        cat $HOME/.zshrc
+        echo 'alias plog="bash $HOME/.tools/plog/run.sh"' >> $HOME/.zshrc
+        source $HOME/.zshrc
     fi
 }
 
-PTH="$HOME/.tools/plog"
+set_dir() {
+    if [[ ! -d "$PTH" ]]; then
+        mkdir -p "$PTH"
+        cp * "$PTH"/
+    fi
+}
 
-mkdir -p "$PTH"
+set_dir > /dev/null
 
-cp * "$PTH"/
+create_venv > /dev/null
 
-create_venv
+add_alias > /dev/null
 
-add_alias
-
-source $HOME/.zshrc
-
-source .venv/bin/activate
