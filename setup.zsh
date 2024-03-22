@@ -27,17 +27,17 @@ create_venv() {
 
 # check if the alias is already mantioned in the .zshrc file if not added it
 add_alias () {
-    is_there = $(cat $HOME/.zshrc | grep "alias plog='python3 $HOME/.tools/plog/main.py'")
+    is_there=$(cat $HOME/.zshrc | grep "alias plog='python3 $HOME/.tools/plog/main.py'")
     if [[ $is_there -ne 0 ]]; then
         echo 'alias plog="python3 $HOME/.tools/plog/main.py"' >> $HOME/.zshrc
     fi
 }
 
-PTH = "$HOME/.tools/plog"
+PTH="$HOME/.tools/plog"
 
 mkdir -p "$PTH"
 
-cp ./* "$PTH"/
+cp * "$PTH"/
 
 check_virtualenv
 
