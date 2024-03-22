@@ -27,7 +27,7 @@ create_venv() {
 
 # check if the alias is already mantioned in the .zshrc file if not added it
 add_alias () {
-    $(cat $HOME/.zshrc | grep "alias plog='python3 $HOME/.tools/plog/main.py'")
+    $(cat $HOME/.zshrc | grep 'alias plog="python3 $HOME/.tools/plog/main.py"')
     if [[ $? -eq 1 ]]; then
         echo 'alias plog="python3 $HOME/.tools/plog/main.py"' >> $HOME/.zshrc
         cat $HOME/.zshrc
