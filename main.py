@@ -1,8 +1,8 @@
 import os
-
 from Quartz import CGSessionCopyCurrentDictionary as Session
-
 from datetime import datetime
+from colorama import Fore as cl
+from colorama import Style as st
 
 """
 A class representing a timer.
@@ -34,8 +34,8 @@ def lunch():
     start = lock = datetime.now()
     logTime = timeAway = 0
     alive = apart = True
-    print(f'\t[StartTime {start.strftime("%H:%M")}]')
-    print(f"[LogTime]|[TimeAway]|[CurentTime]")
+    print(f'      {cl.BLUE}[StartTime {cl.CYAN}{start.strftime("%H:%M")}{cl.BLUE}]{st.RESET_ALL}')
+    print(f"{cl.GREEN}[LogTime]{cl.RED}[TimeAway]{cl.MAGENTA}[CurentTime]{st.RESET_ALL}")
     while alive:
         try:
             dic = Session()
@@ -51,15 +51,15 @@ def lunch():
                 if apart == True:
                     curentTime = datetime.now()
                     timeAway = curentTime.minute - lock.minute
-                    print(f'[ {Timer(logTime)} ]|[ {Timer(timeAway)}  ]|[  {curentTime.strftime("%H:%M")}   ]')
+                    print(f'{cl.GREEN}[ {cl.CYAN}{Timer(logTime)} {cl.GREEN}]{cl.RED}[ {cl.CYAN}{Timer(timeAway)}  {cl.RED}]{cl.MAGENTA}[  {cl.CYAN}{curentTime.strftime("%H:%M")}   {cl.MAGENTA}]{st.RESET_ALL}')
                     apart = False
         except KeyboardInterrupt:
             alive = False
             curentTime = datetime.now()
             timeAway = curentTime.minute - lock.minute
-            print(f'[ {Timer(logTime)} ]|[ {Timer(timeAway)}  ]|[  {curentTime.strftime("%H:%M")}   ]')
+            print(f'\r{cl.GREEN}[ {cl.CYAN}{Timer(logTime)} {cl.GREEN}]{cl.RED}[ {cl.CYAN}{Timer(timeAway)}  {cl.RED}]{cl.MAGENTA}[  {cl.CYAN}{curentTime.strftime("%H:%M")}   {cl.MAGENTA}]{st.RESET_ALL}')
             apart = False
-            print('\rexiting...')
+            print(f"{cl.RED}exiting...{st.RESET_ALL}")
 
 if __name__ == '__main__':
     lunch()
