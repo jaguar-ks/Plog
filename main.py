@@ -20,9 +20,11 @@ class Timer:
     Minutes = 0
     
     def __init__(self, M=0):
-        self.Hours = M // 60
-        self.Minutes = M % 60
-    
+        if M >=60:
+            self.Hours = M // 60
+            self.Minutes = M % 60
+        else:
+            self.Minutes = M
     def __str__(self):
         Tm = str(self.Hours)
         if len(Tm) == 1:Tm = '0'+Tm
