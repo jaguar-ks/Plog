@@ -40,18 +40,19 @@ class Timer:
     def screenLocked(self):
         if self.apart == False:
             self.lock = datetime.now()
-            self.logTime += ((self.lock.hour - self.start.hour) * 60) + (self.lock.minute - self.start.minute)
-            self.timeCtrlC = ((self.lock.hour - self.start.hour) * 60) + (self.lock.minute - self.start.minute)
-            self.start = datetime.time()
+            self.logTime += abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
+            self.start = datetime.now()
             self.apart = True
     
     def logedBack(self):
         if self.apart == True:
             curentTime = datetime.now()
-            self.timeAway = curentTime.minute - self.lock.minute
+            self.timeAway = abs(curentTime.minute - self.lock.minute)
             print(f'{cl.GREEN}[ {cl.CYAN}{Timer(self.logTime)} {cl.GREEN}]{cl.RED}[ {cl.CYAN}{Timer(self.timeAway)}  {cl.RED}]{cl.MAGENTA}[  {cl.CYAN}{Timer(curentTime.hour * 60 + curentTime.minute)}   {cl.MAGENTA}]{st.RESET_ALL}')
             self.apart = False
     
     def CrtlC(self):
+        curentTime = datetime.now()
+        self.timeCtrlC = abs((self.lock.hour * 60 + self.lock.minute) - (curentTime.hour * 60 + curentTime.minute))
         print(f'\r{cl.GREEN}[ {cl.CYAN}{Timer(self.logTime + self.timeCtrlC)} {cl.GREEN}]{cl.RED}[ {cl.CYAN}{Timer(0)}  {cl.RED}]{cl.MAGENTA}[  {cl.CYAN}{Timer(datetime.now().hour * 60 + datetime.now().minute)}   {cl.MAGENTA}]{st.RESET_ALL}')
         print(f"{cl.RED}exiting...{st.RESET_ALL}")
