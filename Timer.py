@@ -1,7 +1,6 @@
 from datetime import datetime
 from colorama import Fore as cl
 from colorama import Style as st
-
 """
 A class representing a timer.
 
