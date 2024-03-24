@@ -34,7 +34,7 @@ class Timer:
         return Tm + ':' + Mn
 
     def printHead(self):
-        print(f'      {cl.BLUE}[StartTime {cl.CYAN}{Timer(self.start.minute)}{cl.BLUE}]{st.RESET_ALL}')
+        print(f'      {cl.BLUE}[StartTime {cl.CYAN}{Timer(self.start.hour * 60 + self.start.minute)}{cl.BLUE}]{st.RESET_ALL}')
         print(f"{cl.GREEN}[LogTime]{cl.RED}[TimeAway]{cl.MAGENTA}[CurentTime]{st.RESET_ALL}")
     
     def screenLocked(self):
