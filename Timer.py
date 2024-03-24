@@ -47,7 +47,7 @@ class Timer:
     def logedBack(self):
         if self.apart == True:
             curentTime = datetime.now()
-            self.timeAway = abs(curentTime.minute - self.lock.minute)
+            self.timeAway = abs((self.lock.hour * 60 + self.lock.minute) - (curentTime.hour * 60 + curentTime.minute))
             print(f'{cl.GREEN}[ {cl.CYAN}{Timer(self.logTime)} {cl.GREEN}]{cl.RED}[ {cl.CYAN}{Timer(self.timeAway)}  {cl.RED}]{cl.MAGENTA}[  {cl.CYAN}{Timer(curentTime.hour * 60 + curentTime.minute)}   {cl.MAGENTA}]{st.RESET_ALL}')
             self.apart = False
     
