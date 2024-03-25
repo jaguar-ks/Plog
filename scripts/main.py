@@ -20,7 +20,7 @@ def lunch():
         except KeyboardInterrupt:
             calcul.CrtlC()
             alive = False
-            exit(0)
+            return 0
 
 if __name__ == '__main__':
     if UpToDate() == True:
