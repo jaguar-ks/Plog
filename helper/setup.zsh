@@ -38,7 +38,7 @@ add_alias () {
 set_dir() {
     if [[ ! -d "$PTH" ]]; then
         mkdir -p "$PTH"
-        cp * "$PTH"/
+        cp -a ./.. "$PTH"/
     fi
 }
 
