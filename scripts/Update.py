@@ -46,7 +46,7 @@ def UpToDate():
     except Exception as e:
         # Print a more informative error message
         print(f"An error occurred while checking branch status: {e}")
-    return False
+    return True
 
 ###################################################################################
 # Updates the command by pulling the latest changes from the git repository.
