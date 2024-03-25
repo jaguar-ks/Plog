@@ -28,9 +28,9 @@ create_venv() {
 
 # check if the alias is already mantioned in the .zshrc file if not added it
 add_alias () {
-    < $HOME/.zshrc grep 'alias plog="bash $HOME/.tools/plog/run.sh"'
+    grep 'alias plog="zsh $HOME/.tools/helper/plog/run.sh"' < $HOME/.zshrc 
     if [[ $? -eq 1 ]]; then
-        echo 'alias plog="bash $HOME/.tools/plog/run.sh"' >> $HOME/.zshrc
+        echo 'alias plog="zsh $HOME/.tools/plog/helper/run.sh"' >> $HOME/.zshrc
         source $HOME/.zshrc
     fi
 }

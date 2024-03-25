@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source $HOME/.tools/plog/setup.zsh
+source $HOME/.tools/plog/helper/setup.zsh
 
 source $HOME/.tools/plog/.venv/bin/activate
 

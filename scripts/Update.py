@@ -64,7 +64,7 @@ def UpToDate():
 def UpDate():
     # Going to script Path
     home = os.path.expanduser('~')
-    os.chdir(home + '/.tools/cclass')
+    os.chdir(home + '/.tools/plog')
     Updating = subprocess.Popen(['git', 'pull'], stdout=subprocess.PIPE)
     # Waiting  for the process to finish and printing a loading message
     while Updating.poll() is None:
