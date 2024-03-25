@@ -90,6 +90,6 @@ def UpDate():
 def removeCache():
     # Going to the script path
     home = os.path.expanduser('~')
-    os.chdir(home+'/.tools/plog')
+    os.chdir(home+'/.tools/plog/scripts')
     # Deleting the cache directory
     shutil.rmtree("__pycache__")

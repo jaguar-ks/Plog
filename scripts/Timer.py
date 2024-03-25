@@ -62,9 +62,9 @@ class Timer:
     #################################
     def printHead(self):
         print(f'\t    {cl.BLUE}[StartTime {cl.CYAN}{Timer(self.start.hour * 60 + self.start.minute)}{cl.BLUE}]{st.RESET_ALL}')
-        print(f"{cl.GREEN}⊢------------{cl.RED}--------------{cl.MAGENTA}--------------—⊣")
+        print(f"{cl.GREEN}_____________{cl.RED}______________{cl.MAGENTA}________________")
         print(f"{cl.GREEN}⎜[ LogTime ]⎥{cl.RED}⎥[ TimeAway ]⎥{cl.MAGENTA}⎥[ CurentTime ]⎥{st.RESET_ALL}")
-        print(f"{cl.GREEN}⎜------------{cl.RED}--------------{cl.MAGENTA}---------------⎥")
+        print(f"{cl.GREEN}⎜-----------⎥{cl.RED}⎥------------⎥{cl.MAGENTA}⎥--------------⎥")
     
     ##############################################
     # Updates the timer when the screen is locked.
@@ -93,5 +93,5 @@ class Timer:
         curentTime = datetime.now()
         self.timeCtrlC = abs((self.lock.hour * 60 + self.lock.minute) - (curentTime.hour * 60 + curentTime.minute))
         print(f'\r{cl.GREEN}⎜[  {cl.CYAN}{Timer(self.logTime + self.timeCtrlC)}  {cl.GREEN}]⎥{cl.RED}⎥[  {cl.CYAN}{Timer(0)}   {cl.RED}]⎥{cl.MAGENTA}⎥[   {cl.CYAN}{Timer(datetime.now().hour * 60 + datetime.now().minute)}    {cl.MAGENTA}]⎥{st.RESET_ALL}')
-        print(f"{cl.GREEN}⎣____________{cl.RED}______________{cl.MAGENTA}_______________⎦")
+        print(f"{cl.GREEN}⎣___________⎦{cl.RED}⎥____________⎦{cl.MAGENTA}⎥______________⎦")
         print(f"{cl.RED}exiting...{st.RESET_ALL}")
