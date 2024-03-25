@@ -10,7 +10,7 @@ To install the script you can runthe following commands in your terminal
 
 ```bash
     git clone git@github.com:jaguar-ks/Plog.git
-    cd Plog
+    cd Plog/helper
     ./setup.sh
 ```
 
