@@ -29,5 +29,4 @@ if __name__ == '__main__':
         if choice == 'y' or choice == 'yes':
             UpDate()
     lunch()
-    removeCache()
     

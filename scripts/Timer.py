@@ -29,7 +29,7 @@ class Timer:
     Hours = Minutes = 0
     start = lock = datetime.now()
     apart = True
-    logTime = timeAway = timeCtrlC = 0
+    logTime = timeAway = timeCtrlC = addedTime = 0
         
     #################################################
     # Initializes the timer with the given minutes.
@@ -72,7 +72,8 @@ class Timer:
     def screenLocked(self):
         if self.apart == False:
             self.lock = datetime.now()
-            self.logTime += abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
+            self.addedTime = abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
+            self.logTime += self.addedTime
             self.start = datetime.now()
             self.apart = True
     
@@ -83,7 +84,7 @@ class Timer:
         if self.apart == True:
             curentTime = datetime.now()
             self.timeAway = abs((self.lock.hour * 60 + self.lock.minute) - (curentTime.hour * 60 + curentTime.minute))
-            print(f'{cl.GREEN}⎜[  {cl.CYAN}{Timer(self.logTime)}  {cl.GREEN}]⎥{cl.RED}⎥[  {cl.CYAN}{Timer(self.timeAway)}   {cl.RED}]⎥{cl.MAGENTA}⎥[   {cl.CYAN}{Timer(curentTime.hour * 60 + curentTime.minute)}    {cl.MAGENTA}]⎥{st.RESET_ALL}')
+            print(f'{cl.GREEN}⎜[  {cl.CYAN}{Timer(self.logTime)}  {cl.GREEN}]⎥{cl.RED}⎥[  {cl.CYAN}{Timer(self.timeAway)}   {cl.RED}]⎥{cl.MAGENTA}⎥[   {cl.CYAN}{Timer(curentTime.hour * 60 + curentTime.minute)}    {cl.MAGENTA}]⎥+{Timer(self.addedTime)}{st.RESET_ALL}')
             self.apart = False
     
     ####################################################
