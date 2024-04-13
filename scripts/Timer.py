@@ -52,9 +52,11 @@ class Timer:
     ##########################################################
     def __str__(self):
         Tm = str(self.Hours)
-        if len(Tm) == 1:Tm = '0'+Tm
+        if len(Tm) == 1:
+            Tm = '0'+Tm
         Mn = str(self.Minutes)
-        if len(Mn) == 1:Mn = '0'+Mn
+        if len(Mn) == 1:
+            Mn = '0'+Mn
         return Tm + ':' + Mn
 
     #################################
@@ -72,7 +74,10 @@ class Timer:
     def screenLocked(self):
         if self.apart == False:
             self.lock = datetime.now()
-            self.addedTime = abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
+            if self.lock.day < self.start.day:
+                self.addedTime = abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
+            else:
+                self.addedTime = abs((23 * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
             self.logTime += self.addedTime
             self.start = datetime.now()
             self.apart = True
