@@ -74,7 +74,7 @@ class Timer:
     def screenLocked(self):
         if self.apart == False:
             self.lock = datetime.now()
-            if self.lock.day < self.start.day:
+            if self.lock.day > self.start.day:
                 self.addedTime = abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
             else:
                 self.addedTime = abs((23 * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
