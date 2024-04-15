@@ -75,9 +75,9 @@ class Timer:
         if self.apart == False:
             self.lock = datetime.now()
             if self.lock.day > self.start.day:
-                self.addedTime = abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
-            else:
                 self.addedTime = abs((23 * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
+            else:
+                self.addedTime = abs((self.lock.hour * 60 + self.lock.minute) - (self.start.hour * 60 + self.start.minute))
             self.logTime += self.addedTime
             self.start = datetime.now()
             self.apart = True
